@@ -1,0 +1,53 @@
+CREATE TABLE features(
+id serial PRIMARY KEY,
+time_stamp timestamp,
+mac varchar(25),
+src_pkt real,
+src_byte real,
+src_flow real,
+dst_pkt real,
+dst_byte real,
+dst_flow real,
+rx_packets real, 
+tx_packets real, 
+rx_dropped real, 
+tx_dropped real, 
+rx_bytes real, 
+tx_bytes real, 
+rx_errors real, 
+tx_errors real, 
+rx_frame_err real, 
+rx_over_err real,
+rx_crc_err real, 
+collisions real, 
+duration_sec real,
+tcp_fail_p real,
+tcp_rst_p real
+);
+
+
+TCP SCORE
+tcp_conn
+tcp_port_count
+tcp_failed
+rst_pkt
+
+UDP SCORE
+udp_conn
+udp_port_count
+
+
+DST SCORE
+_dst_bytes
+_dst_flow
+_dst_pkt
+port_h_rx_bytes
+port_h_rx_pkt
+
+
+SRC SCORE
+_src_bytes
+_src_flow
+_src_pkt
+port_h_tx_bytes
+port_h_tx_pkt

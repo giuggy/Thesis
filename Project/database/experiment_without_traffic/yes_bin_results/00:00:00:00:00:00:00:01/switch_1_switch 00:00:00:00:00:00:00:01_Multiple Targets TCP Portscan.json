@@ -1,0 +1,4 @@
+normal
+{"hmi_dst_flow": 0.8541313125470045, "tcp_port_counts": 0.0, "port_hmi_rx_pkt": 0.36677453203174715, "port_hmi_tx_pkt": 0.5100729785321285, "port_1_s_tx_pkt": 0.5123366959137129, "port_2_s_rx_pkt": 0.0, "port_2_s_tx_pkt": 0.14348988488074665, "port_3_s_rx_pkt": 0.01002466837232726, "port_3_s_tx_pkt": 0.5276651755515633, "rst": 0.0, "tcp_failed": 0.0}
+attack
+{"hmi_dst_flow": 2.5385742239145443, "tcp_port_counts": 2.918422814790512, "port_hmi_rx_pkt": 3.1204234682764125, "port_hmi_tx_pkt": 3.38759161154832, "port_1_s_tx_pkt": 3.366861795370035, "port_2_s_rx_pkt": 3.373806998281159, "port_2_s_tx_pkt": 3.3711900271418225, "port_3_s_rx_pkt": 3.4522487362858025, "port_3_s_tx_pkt": 3.3473890538164053, "rst": 2.03119672772221, "tcp_failed": 0.0}

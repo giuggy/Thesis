@@ -1,0 +1,4 @@
+normal
+{"h7_dst_flow": 0.0, "h8_dst_flow": 0.0, "h9_dst_flow": 0.0, "rst": 0.0, "tcp_failed": 0.0, "tcp_port_counts": 0.0}
+attack
+{"h7_dst_flow": 0.8068564213693499, "h8_dst_flow": 1.213216805634909, "h9_dst_flow": 0.8068564213693501, "rst": 2.858336534406954, "tcp_failed": 0.8066962983922001, "tcp_port_counts": 2.9160977994601156}

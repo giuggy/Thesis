@@ -1,0 +1,275 @@
+import os
+import ast
+from global_variable import GlobalVariable
+
+
+variables = GlobalVariable
+attacks = {1: 'switch 2', 2: 'switch 3', 3: 'switch 4', 4: 'switch 2'}
+targets = {1: 'switch 3', 2: 'switch 4', 3: 'switch 2', 4: 'all hosts'}
+
+hosts = {'00:00:00:00:00:00:00:01': ['hmi'],
+         '00:00:00:00:00:00:00:02': ['h1', 'h2', 'h3'],
+         '00:00:00:00:00:00:00:03': ['h4', 'h5', 'h6'],
+         '00:00:00:00:00:00:00:04': ['h7', 'h8', 'h9']}
+s1 = '00:00:00:00:00:00:00:01'
+s2 = '00:00:00:00:00:00:00:02'
+s3 = '00:00:00:00:00:00:00:03'
+s4 = '00:00:00:00:00:00:00:04'
+
+
+def division_fun(dictionary):
+    host = hosts[directory]
+    division = {}
+    for key, value in dictionary.items():
+        if 'rst' == key or 'tcp' in key:
+            try:
+                division['tcp_connection'].append(dictionary[key]['reference'])
+            except KeyError:
+                division['tcp_connection'] = [dictionary[key]['reference']]
+        elif 'udp' in key:
+            try:
+                division['udp_connection'].append(dictionary[key]['reference'])
+            except KeyError:
+                division['udp_connection'] = [dictionary[key]['reference']]
+
+        else:
+            if len(host) > 1:
+                if host[0] in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+
+                        k = host[0] + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = host[0] + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+                elif host[1] in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+                        k = host[1] + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = host[1] + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+                elif host[2] in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+                        k = host[2] + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = host[2] + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+                elif 's' in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+                        k = 'switch' + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = 'switch' + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+            else:
+                if host[0] in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+                        k = host[0] + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = host[0] + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+                elif '1_s' in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+                        k = 'switch_2' + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = 'switch_2' + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+                elif '2_s' in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+                        k = 'switch_3' + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = 'switch_3' + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+                elif '3_s' in key:
+                    val = dictionary[key]['reference']
+                    if 'src_pkt' in key or 'tx_pkt' in key:
+                        k = 'switch_4' + '_src_pkt'
+                    elif 'dst_pkt' in key or 'rx_pkt' in key:
+                        k = 'switch_4' + '_dst_pkt'
+                    else:
+                        continue
+                    try:
+                        division[k].append(val)
+                    except KeyError:
+                        division[k] = [val]
+    result = {}
+    for key, value in division.items():
+        result[key] = avg(value)
+    return result
+
+
+def printer(information, status):
+    try:
+        l = status.split('_')
+        a = int(l[1])
+        target = "TARGET: " + targets[a]
+        attack = "ATTACKER: " + attacks[a]
+    except IndexError:
+        target = '-------------------'
+        attack = '-------------------'
+
+    print('---------------------', target, '---------------------', status, '---------------------', attack,
+          '-----------------------------------------------------------------------------------------------------')
+    print('                                                                 HMI  dst: ',
+          information[s1][status]['hmi_dst_pkt'], 'src: ', information[s1][status]['hmi_dst_pkt'])
+    print('')
+    print('                                                                  |')
+    print('')
+    print('                                                            SWITCH 1 udp: ',
+          information[s1][status]['udp_connection'], 'tcp: ', information[s1][status]['tcp_connection'])
+    print('SWITCH 2 dst: ', information[s1][status]['switch_2_dst_pkt'], 'src: ',
+          information[s1][status]['switch_2_src_pkt'],
+          ' | SWITCH 3 dst: ', information[s1][status]['switch_3_dst_pkt'], 'src: ',
+          information[s1][status]['switch_3_src_pkt'],
+          ' | SWITCH 4 dst: ', information[s1][status]['switch_4_dst_pkt'], 'src: ',
+          information[s1][status]['switch_4_src_pkt'])
+    print('')
+    print(
+        "                                                 |                           |               "
+        "                                |")
+    print('')
+    print('SWITCH 2 dst: ', information[s2][status]['switch_dst_pkt'], 'src: ',
+          information[s2][status]['switch_src_pkt'],
+          ' | SWITCH 3 dst: ', information[s3][status]['switch_dst_pkt'], 'src: ',
+          information[s3][status]['switch_src_pkt'],
+          ' | SWITCH 4 dst: ', information[s4][status]['switch_dst_pkt'], 'src: ',
+          information[s4][status]['switch_src_pkt'])
+    print('SWITCH 2 tcp: ', information[s2][status]['tcp_connection'], 'udp: ',
+          information[s2][status]['udp_connection'],
+          '              | SWITCH 3 tcp: ', information[s3][status]['tcp_connection'], 'udp: ',
+          information[s3][status]['udp_connection'],
+          '               | SWITCH 4 tcp: ', information[s4][status]['tcp_connection'], 'udp: ',
+          information[s4][status]['udp_connection'])
+    print("")
+    print(
+        " |                                                                |                                           "
+        "                           |")
+    print("")
+    print('H1 dst: ', information[s2][status]['h1_dst_pkt'], 'src: ', information[s2][status]['h1_src_pkt'],
+          '       H4 dst: ', information[s3][status]['h4_dst_pkt'], 'src: ', information[s3][status]['h4_src_pkt'],
+          '                        H7 dst: ', information[s4][status]['h7_dst_pkt'], 'src: ',
+          information[s4][status]['h7_src_pkt']
+          )
+
+    print('   H2 dst: ', information[s2][status]['h2_dst_pkt'], 'src: ', information[s2][status]['h2_src_pkt'],
+          '          H5 dst: ', information[s3][status]['h5_dst_pkt'], 'src: ', information[s3][status]['h5_src_pkt'],
+          '        H8 dst: ', information[s4][status]['h8_dst_pkt'], 'src: ', information[s4][status]['h8_src_pkt'])
+    print('      H3 dst: ', information[s2][status]['h3_dst_pkt'], 'src: ', information[s2][status]['h3_src_pkt'],
+          '             H6 dst: ', information[s3][status]['h6_dst_pkt'], 'src: ',
+          information[s3][status]['h6_src_pkt'],
+          '        H9 dst: ', information[s4][status]['h9_dst_pkt'], 'src: ', information[s4][status]['h9_src_pkt'])
+
+
+def avg(lst):
+    return sum(lst) / float(len(lst))
+
+
+if __name__ == '__main__':
+    information = {}
+    for directory in sorted(os.listdir(variables.PATH_ENTROPY)):
+        path = variables.PATH_ENTROPY + directory + '/' + variables.DIR_V + '/'
+        list_var = sorted(set(variables.day_dict.values()))
+        for file in sorted(os.listdir(path + list_var[len(list_var) - 1])):
+            with open(path + list_var[len(list_var) - 1] + '/' + file) as f:
+                norm_dic = ast.literal_eval(f.read())
+                norm_dic.pop('time', None)
+                norm_lst = list(map(lambda x: x['reference'], list(norm_dic.values())))
+            break
+        for file in sorted(os.listdir(path + list_var[0])):
+            with open(path + list_var[0] + '/' + file) as f:
+                att_1_dic = ast.literal_eval(f.read())
+                att_1_dic.pop('time', None)
+                att_1_lst = list(map(lambda x: x['reference'], list(att_1_dic.values())))
+        for file in sorted(os.listdir(path + list_var[1])):
+            with open(path + list_var[1] + '/' + file) as f:
+                att_2_dic = ast.literal_eval(f.read())
+                att_2_dic.pop('time', None)
+                att_2_lst = list(map(lambda x: x['reference'], list(att_2_dic.values())))
+        for file in sorted(os.listdir(path + list_var[2])):
+            with open(path + list_var[2] + '/' + file) as f:
+                att_3_dic = ast.literal_eval(f.read())
+                att_3_dic.pop('time', None)
+                att_3_lst = list(map(lambda x: x['reference'], list(att_3_dic.values())))
+        for file in sorted(os.listdir(path + list_var[3])):
+            with open(path + list_var[3] + '/' + file) as f:
+                att_4_dic = ast.literal_eval(f.read())
+                att_4_dic.pop('time', None)
+                att_4_lst = list(map(lambda x: x['reference'], list(att_4_dic.values())))
+        '''
+        print('--------------------------------------------------------------------------------')
+        print('SWITCH ANALYZED ', directory)
+        print(avg(norm_lst))
+        print('ATTACKER ', attacks[1], " TARGET ", targets[1])
+        print(avg(att_1_lst))
+        print('ATTACKER ', attacks[2], " TARGET ", targets[2])
+        print(avg(att_2_lst))
+        print('ATTACKER ', attacks[3], " TARGET ", targets[3])
+        print(avg(att_3_lst))
+        print('ATTACKER ', attacks[4], " TARGET ", targets[4])
+        print(avg(att_4_lst))
+        print('--------------------------------------------------------------------------------')
+
+        
+        '''
+        print('--------------------------------------------------------------------------------')
+        print('SWITCH ANALYZED ', directory)
+        information[directory] = {'normal': division_fun(norm_dic),
+                                  'attack_1': division_fun(att_1_dic),
+                                  'attack_2': division_fun(att_2_dic),
+                                  'attack_3': division_fun(att_3_dic),
+                                  'attack_4': division_fun(att_4_dic)}
+        print('--------------------------------------------------------------------------------')
+        print(information)
+    printer(information, 'normal')
+    printer(information, 'attack_1')
+    printer(information, 'attack_2')
+    printer(information, 'attack_3')
+    printer(information, 'attack_4')
+
+
+
+
+
+
+
+

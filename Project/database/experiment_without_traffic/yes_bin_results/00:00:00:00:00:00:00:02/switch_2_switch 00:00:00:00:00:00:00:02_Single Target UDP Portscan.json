@@ -1,0 +1,4 @@
+normal
+{"h2_dst_pkt": 0.0, "port_h3_rx_pkt": 0.02718926692697024, "port_h3_tx_pkt": 0.4472362793615207, "port_1_s_rx_pkt": 0.5123366959137129, "port_1_s_tx_pkt": 0.5184971003001911, "port_udp_counts": 0.0, "udp_connection": 0.0}
+attack
+{"h2_dst_pkt": 0.4024420664988342, "port_h3_rx_pkt": 0.0, "port_h3_tx_pkt": 0.9630247260941546, "port_1_s_rx_pkt": 10.30010833208154, "port_1_s_tx_pkt": 9.993322720824398, "port_udp_counts": 9.133505652897249, "udp_connection": 9.158191886764186}

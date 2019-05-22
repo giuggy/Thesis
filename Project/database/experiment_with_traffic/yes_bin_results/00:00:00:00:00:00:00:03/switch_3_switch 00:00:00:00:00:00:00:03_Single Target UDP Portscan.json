@@ -1,0 +1,4 @@
+normal
+{"port_1_s_rx_pkt": 2.9077984429371564, "port_1_s_tx_pkt": 3.1062580939827846, "port_udp_counts": 0.0, "udp_connection": 0.0}
+attack
+{"port_1_s_rx_pkt": 4.292960092360315, "port_1_s_tx_pkt": 4.5822844948871815, "port_udp_counts": 0.0, "udp_connection": 0.0}

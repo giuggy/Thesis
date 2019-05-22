@@ -1,0 +1,32 @@
+BINARY CLASSIFIER
+00:00:00:00:00:00:00:03
+MUTUAL
+"position feature attack;"\
+"16 h6_dst_bytes 0.34533133916808945;"\
+"15 h6_dst_pkt 0.3201437952305457;"\
+"14 port_1_s_rx_bytes 0.49888250425559344;"\
+"13 port_1_s_rx_pkt 0.5152326411737534;"\
+"12 port_1_s_tx_bytes 0.5021456702742827;"\
+"11 port_1_s_tx_pkt 0.5021456702742827;"\
+"10 port_h4_tx_bytes 0.32478410437105;"\
+"9 port_h4_tx_pkt 0.4080785759121033;"\
+"8 port_h5_tx_bytes 0.31867404930266163;"\
+"7 port_h5_tx_pkt 0.42100547702431124;"\
+"6 port_h6_rx_bytes 0.4648006717021115;"\
+"5 port_h6_rx_pkt 0.4624858568872966;"\
+"4 port_h6_tx_bytes 0.4829122931454797;"\
+"3 port_h6_tx_pkt 0.49432636081056114;"\
+"2 tcp_failed 0.32191339127516727;"\
+"1 tcp_port_counts 0.47612211092717704;"\
+
+BINARY CLASSIFIER
+00:00:00:00:00:00:00:03
+IMPORTANCE
+"position feature attack;"\
+"7 h6_dst_flow 0.011947622114239987;"\
+"6 port_1_s_rx_bytes 0.1944243236402386;"\
+"5 port_1_s_tx_bytes 0.10630515981398099;"\
+"4 port_h5_rx_bytes 0.0165217391304348;"\
+"3 port_h6_rx_bytes 0.17128841161101319;"\
+"2 port_h6_rx_pkt 0.17560904077011782;"\
+"1 port_h6_tx_pkt 0.28502870565975524;"\

@@ -1,0 +1,4 @@
+normal
+{"port_1_s_rx_pkt": 4.196031439781758, "port_1_s_tx_pkt": 4.224927450382486, "port_2_s_rx_pkt": 3.1062580939827846, "port_2_s_tx_pkt": 2.9077984429371564, "port_3_s_rx_pkt": 3.6251112596618587, "port_3_s_tx_pkt": 0.6260600146670486, "port_udp_counts": 0.0, "udp_connection": 0.0}
+attack
+{"port_1_s_rx_pkt": 3.1171948386016846, "port_1_s_tx_pkt": 3.6542104529417223, "port_2_s_rx_pkt": 4.5822844948871815, "port_2_s_tx_pkt": 4.292960092360315, "port_3_s_rx_pkt": 5.152247445789274, "port_3_s_tx_pkt": 2.630190359866609, "port_udp_counts": 0.0, "udp_connection": 0.0}

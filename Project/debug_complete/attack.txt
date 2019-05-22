@@ -1,0 +1,9 @@
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2018-09-25 14:04 CEST
+Nmap scan report for 10.0.0.7
+Host is up (0.065s latency).
+All 1000 scanned ports on 10.0.0.7 are filtered (807) or closed (193)
+MAC Address: FE:21:78:30:CB:4B (Unknown)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 18.69 seconds

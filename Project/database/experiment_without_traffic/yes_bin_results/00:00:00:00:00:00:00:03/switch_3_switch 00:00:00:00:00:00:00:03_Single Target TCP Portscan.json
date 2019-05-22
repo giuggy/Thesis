@@ -1,0 +1,4 @@
+normal
+{"h4_src_flow": 0.0, "port_h4_rx_pkt": 0.0, "port_h4_tx_pkt": 0.4474609553423512, "port_1_s_rx_pkt": 0.4858585659726773, "port_1_s_tx_pkt": 0.0, "rst": 0.0, "tcp_failed": 0.0, "tcp_port_counts": 0.0}
+attack
+{"h4_src_flow": 0.0, "port_h4_rx_pkt": 0.4213903227668317, "port_h4_tx_pkt": 0.9651370651677739, "port_1_s_rx_pkt": 0.9073559439778092, "port_1_s_tx_pkt": 0.8504839803036802, "rst": 0.4024420664988342, "tcp_failed": 0.4024420664988342, "tcp_port_counts": 0.4024420664988342}

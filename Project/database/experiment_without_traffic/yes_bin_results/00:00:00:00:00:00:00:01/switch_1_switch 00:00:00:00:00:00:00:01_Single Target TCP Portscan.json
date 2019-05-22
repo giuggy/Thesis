@@ -1,0 +1,4 @@
+normal
+{"port_2_s_rx_pkt": 0.0, "port_2_s_tx_pkt": 0.14348988488074665, "port_3_s_rx_pkt": 0.01002466837232726, "port_3_s_tx_pkt": 0.5276651755515633, "rst": 0.0, "tcp_failed": 0.0, "tcp_port_counts": 0.0}
+attack
+{"port_2_s_rx_pkt": 0.8504839803036802, "port_2_s_tx_pkt": 1.4903515356733412, "port_3_s_rx_pkt": 1.2601325906961984, "port_3_s_tx_pkt": 1.4080524875187932, "rst": 0.0, "tcp_failed": 0.0, "tcp_port_counts": 0.0}
